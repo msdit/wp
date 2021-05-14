@@ -14,7 +14,6 @@ services:
     networks:
       - app-network
 
-
   phpmyadmin:
     depends_on:
       - db
@@ -22,10 +21,12 @@ services:
     container_name: phpmyadmin
     restart: unless-stopped
     ports:
-      - '2280:80'
+      - "2280:80"
     env_file: .env
     environment:
       PMA_HOST: db
+    volumes:
+      - ./php-conf/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
     networks:
       - app-network
 
