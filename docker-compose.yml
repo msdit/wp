@@ -61,6 +61,7 @@ services:
       - wordpress:/var/www/html
       - ./nginx-conf:/etc/nginx/conf.d
       - certbotdata:/etc/letsencrypt
+      - certbotdata:/etc/nginx/ssl
     networks:
       - app-network
   certbot:
@@ -71,6 +72,7 @@ services:
     volumes:
       - certbotdata:/etc/letsencrypt
       - wordpress:/var/www/html
+      - certbotlog:/var/log/letsencrypt
     command: certonly --webroot --webroot-path=/var/www/html --email maghair148@gmail.com --agree-tos --no-eff-email --staging -d mafinex.com -d www.mafinex.com -d dev.mafinex.com -d charkhacademy.com -d www.charkhacademy.com -d dev.charkhacademy.com
 
 volumes:
@@ -79,6 +81,12 @@ volumes:
     driver_opts:
       type: none
       device: ./data/certbotdata
+      o: bind
+  certbotlog:
+    driver: local
+    driver_opts:
+      type: none
+      device: ./data/certbotlog
       o: bind
   wordpress:
     driver: local
