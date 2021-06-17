@@ -62,15 +62,15 @@ services:
       - certbotdata:/etc/letsencrypt
     networks:
       - app-network
-  certbot:
-    depends_on:
-      - webserver
-    image: certbot/certbot
-    container_name: certbot
-    volumes:
-      - certbotdata:/etc/letsencrypt
-      - wordpress:/var/www/html
-    command: certonly --webroot --webroot-path=/var/www/html --email maghair148@gmail.com --agree-tos --no-eff-email --staging -d mafinex.com -d www.mafinex.com -d dev.mafinex.com
+  # certbot:
+  #   depends_on:
+  #     - webserver
+  #   image: certbot/certbot
+  #   container_name: certbot
+  #   volumes:
+  #     - certbotdata:/etc/letsencrypt
+  #     - wordpress:/var/www/html
+  #   command: certonly --webroot --webroot-path=/var/www/html --email maghair148@gmail.com --agree-tos --no-eff-email --staging -d mafinex.com -d www.mafinex.com -d dev.mafinex.com
 
 volumes:
   certbotdata:
