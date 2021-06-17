@@ -73,7 +73,7 @@ services:
       - certbotdata:/etc/letsencrypt
       - wordpress:/var/www/html
       - certbotlog:/var/log/letsencrypt
-    command: certonly --webroot --webroot-path=/var/www/html --email maghair148@gmail.com --agree-tos --no-eff-email --staging -d mafinex.com -d www.mafinex.com -d dev.mafinex.com -d charkhacademy.com -d www.charkhacademy.com -d dev.charkhacademy.com
+    command: certonly --webroot --webroot-path=/var/www/html --email maghair148@gmail.com --agree-tos --no-eff-email -d mafinex.com -d www.mafinex.com -d dev.mafinex.com -d charkhacademy.com -d www.charkhacademy.com -d dev.charkhacademy.com
 
 volumes:
   certbotdata:
